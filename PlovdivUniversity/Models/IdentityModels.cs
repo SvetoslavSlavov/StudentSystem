@@ -29,5 +29,6 @@ namespace PlovdivUniversity.Models
         {
             return new ApplicationDbContext();
         }
+        
     }
 }

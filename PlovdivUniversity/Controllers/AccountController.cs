@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PlovdivUniversity.Models;
+using System.Text.RegularExpressions;
 
 namespace PlovdivUniversity.Controllers
 {
@@ -65,7 +66,6 @@ namespace PlovdivUniversity.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -439,7 +439,15 @@ namespace PlovdivUniversity.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                if (error.StartsWith("Name"))
+                {
+                    var NameToEmail = Regex.Replace(error, "Name", "Email");
+                    ModelState.AddModelError("", NameToEmail);
+                }
+                else
+                {
+                    ModelState.AddModelError("", error);
+                }
             }
         }
 

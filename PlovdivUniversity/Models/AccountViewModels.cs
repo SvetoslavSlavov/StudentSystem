@@ -5,7 +5,6 @@ namespace PlovdivUniversity.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -49,6 +48,10 @@ namespace PlovdivUniversity.Models
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -64,6 +67,10 @@ namespace PlovdivUniversity.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name ="Username")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

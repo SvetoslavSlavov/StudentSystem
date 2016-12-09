@@ -77,8 +77,7 @@ namespace PlovdivUniversity.Controllers
             }
             return View(student);
         }
-
-        // GET: Student/Create
+        [Authorize(Users ="dj@dj.com")]
         public ActionResult Create()
         {
             return View();
@@ -86,7 +85,7 @@ namespace PlovdivUniversity.Controllers
 
         // POST: Student/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Users = "dj@dj.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LastName, FirstMidName, EnrollmentDate")] Student student)
@@ -109,6 +108,7 @@ namespace PlovdivUniversity.Controllers
         }
 
         // GET: Student/Edit/5
+        [Authorize(Users = "dj@dj.com")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -122,7 +122,7 @@ namespace PlovdivUniversity.Controllers
             }
             return View(student);
         }
-
+        [Authorize(Users = "dj@dj.com")]
         // POST: Student/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         [HttpPost, ActionName("Edit")]
@@ -153,6 +153,7 @@ namespace PlovdivUniversity.Controllers
         }
 
         // GET: Student/Delete/5
+        [Authorize(Users = "dj@dj.com")]
         public ActionResult Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
@@ -172,6 +173,7 @@ namespace PlovdivUniversity.Controllers
         }
 
         // POST: Student/Delete/5
+        [Authorize(Users = "dj@dj.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)

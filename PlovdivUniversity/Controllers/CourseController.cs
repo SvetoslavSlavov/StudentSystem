@@ -37,6 +37,7 @@ namespace PlovdivUniversity.Controllers
         }
 
         // GET: Course/Create
+        [Authorize(Users = "dj@dj.com")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +60,7 @@ namespace PlovdivUniversity.Controllers
             return View(course);
         }
 
+        [Authorize(Users = "dj@dj.com")]
         // GET: Course/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -76,7 +78,7 @@ namespace PlovdivUniversity.Controllers
 
         // POST: Course/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Users = "dj@dj.com")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CourseID,Title,Credits")] Course course)
@@ -91,6 +93,7 @@ namespace PlovdivUniversity.Controllers
         }
 
         // GET: Course/Delete/5
+        [Authorize(Users = "dj@dj.com")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +107,7 @@ namespace PlovdivUniversity.Controllers
             }
             return View(course);
         }
-
+        [Authorize(Users = "dj@dj.com")]
         // POST: Course/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
